@@ -5,7 +5,7 @@ namespace Yaro\Jarboe\Table\Toolbar;
 use Illuminate\Http\Request;
 use Yaro\Jarboe\Table\CRUD;
 
-class MassDeleteTool extends AbstractTool
+class MassRestoreTool extends AbstractTool
 {
     /**
      * Set CRUD object.
@@ -34,7 +34,7 @@ class MassDeleteTool extends AbstractTool
      */
     public function identifier(): string
     {
-        return 'mass-delete';
+        return 'mass-restore';
     }
 
     /**
@@ -42,9 +42,8 @@ class MassDeleteTool extends AbstractTool
      */
     public function render()
     {
-        return view('jarboe::crud.toolbar.mass_delete', [
+        return view('jarboe::crud.toolbar.mass_restore', [
             'tool' => $this,
-            'crud' => $this->crud(),
         ]);
     }
 
@@ -58,13 +57,13 @@ class MassDeleteTool extends AbstractTool
     public function handle(Request $request)
     {
         $errors = [];
-        $removed = [];
+        $restored = [];
         foreach ($request->get('ids') as $id) {
             try {
-                if (!$this->crud()->repo()->delete($id)) {
-                    throw new \Exception(__('jarboe::toolbar.mass_delete.delete_event_failed'));
+                if (!$this->crud()->repo()->restore($id)) {
+                    throw new \Exception(__('jarboe::toolbar.mass_restore.restore_event_failed'));
                 }
-                $removed[] = $id;
+                $restored[] = $id;
             } catch (\Exception $e) {
                 $errors[$id] = $e->getMessage();
             }
@@ -72,7 +71,7 @@ class MassDeleteTool extends AbstractTool
 
         return response()->json([
             'errors' => $errors,
-            'removed' => $removed,
+            'restored' => $restored,
         ]);
     }
 
@@ -81,6 +80,6 @@ class MassDeleteTool extends AbstractTool
      */
     public function check(): bool
     {
-        return true;
+        return $this->crud()->isSoftDeleteEnabled();
     }
 }

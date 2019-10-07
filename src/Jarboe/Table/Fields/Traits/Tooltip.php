@@ -26,4 +26,5 @@ trait Tooltip
     {
         return (bool) $this->tooltip;
     }
+
 }

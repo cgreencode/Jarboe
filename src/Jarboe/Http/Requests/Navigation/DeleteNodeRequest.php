@@ -2,6 +2,7 @@
 
 namespace Yaro\Jarboe\Http\Requests\Navigation;
 
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class DeleteNodeRequest extends FormRequest
@@ -28,4 +29,5 @@ class DeleteNodeRequest extends FormRequest
             'id' => 'required',
         ];
     }
+
 }

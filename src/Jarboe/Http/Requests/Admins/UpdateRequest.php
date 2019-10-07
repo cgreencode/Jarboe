@@ -2,6 +2,7 @@
 
 namespace Yaro\Jarboe\Http\Requests\Admins;
 
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateRequest extends FormRequest

@@ -2,6 +2,7 @@
 
 namespace Yaro\Jarboe\Http\Requests\Auth;
 
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
@@ -32,4 +33,5 @@ class RegisterRequest extends FormRequest
             'password' => 'required|confirmed',
         ];
     }
+
 }

@@ -2,6 +2,7 @@
 
 namespace Yaro\Jarboe\Http\Requests\Navigation;
 
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateNodeRequest extends FormRequest

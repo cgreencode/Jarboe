@@ -14,6 +14,7 @@ use Illuminate\Support\Collection;
 use Yaro\Jarboe\Table\Fields\Traits\Orderable;
 use Yaro\Jarboe\Table\Fields\Traits\Relations;
 
+
 class Radio extends AbstractField
 {
     use Orderable;
@@ -115,4 +116,5 @@ class Radio extends AbstractField
             'field' => $this,
         ]);
     }
+
 }

@@ -2,6 +2,7 @@
 
 namespace Yaro\Jarboe\Http\Requests\Auth;
 
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginRequest extends FormRequest
@@ -35,4 +36,5 @@ class LoginRequest extends FormRequest
             'remember' => '',
         ];
     }
+
 }

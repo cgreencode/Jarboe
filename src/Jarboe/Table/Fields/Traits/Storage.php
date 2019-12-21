@@ -40,7 +40,7 @@ trait Storage
         return $this;
     }
 
-    public function getDisk()
+    public function getDisK()
     {
         return $this->disk;
     }

@@ -72,8 +72,7 @@ return [
     /*
      * CSS theme for admin panel.
      *
-     * Supported: "default", "dark", "light", "google-skin", "pixel-smash", "glass", "material".
-     * Non-supported theme name will be added as class to `<body>` element.
+     * Supported: "default", "dark", "light", "google-skin", "pixel-smash", "glass", "material"
      */
     'theme' => 'light',
 

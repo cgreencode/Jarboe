@@ -8,10 +8,8 @@ class EditAction extends AbstractAction
 
     public function render($model = null)
     {
-        return view('jarboe::crud.actions.edit', [
-            'crud' => $this->crud(),
-            'model' => $model,
-            'action' => $this,
-        ]);
+        $crud = $this->crud();
+
+        return view('jarboe::crud.actions.edit', compact('crud', 'model'));
     }
 }

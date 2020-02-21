@@ -8,17 +8,13 @@ class DeleteAction extends AbstractAction
 
     public function render($model = null)
     {
+        $crud = $this->crud();
         $isVisible = parent::shouldRender($model);
-        if ($this->crud()->isSoftDeleteEnabled()) {
+        if ($crud->isSoftDeleteEnabled()) {
             $isVisible = !$model->trashed();
         }
 
-        return view('jarboe::crud.actions.delete', [
-            'crud' => $this->crud(),
-            'model' => $model,
-            'isVisible' => $isVisible,
-            'action' => $this,
-        ]);
+        return view('jarboe::crud.actions.delete', compact('crud', 'model', 'isVisible'));
     }
 
     public function isAllowed($model = null)

@@ -8,14 +8,10 @@ class ForceDeleteAction extends AbstractAction
 
     public function render($model = null)
     {
-        $isVisible = $this->crud()->isSoftDeleteEnabled() && $model->trashed();
+        $crud = $this->crud();
+        $isVisible = $crud->isSoftDeleteEnabled() && $model->trashed();
 
-        return view('jarboe::crud.actions.force_delete', [
-            'crud' => $this->crud(),
-            'model' => $model,
-            'isVisible' => $isVisible,
-            'action' => $this,
-        ]);
+        return view('jarboe::crud.actions.force_delete', compact('crud', 'model', 'isVisible'));
     }
 
     public function isAllowed($model = null)

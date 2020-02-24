@@ -40,9 +40,6 @@ trait UpdateHandlerTrait
             if ($field->hidden('edit') || $field->isReadonly() || $field->shouldSkip($request)) {
                 continue;
             }
-
-            $field->beforeUpdate($model);
-
             $data += [$field->name() => $field->value($request)];
         }
 

@@ -72,11 +72,6 @@ abstract class AbstractField implements FieldPropsInterface
         // dummy
     }
 
-    public function beforeUpdate($model)
-    {
-        // dummy
-    }
-
     public function isInline()
     {
         return false;

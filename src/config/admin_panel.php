@@ -72,8 +72,7 @@ return [
     /*
      * CSS theme for admin panel.
      *
-     * Supported: "default", "dark", "light", "google-skin", "pixel-smash", "glass", "material".
-     * Non-supported theme name will be added as class to `<body>` element.
+     * Supported: "default", "dark", "light", "google-skin", "pixel-smash", "glass", "material"
      */
     'theme' => 'light',
 
@@ -86,9 +85,4 @@ return [
      * Default routes for admin-panel section, e.g. admins and roles/permissions crud tables.
      */
     'default_routes_enabled' => true,
-
-    /*
-     * License key.
-     */
-    'license_key' => env('JARBOE_LICENSE_KEY'),
 ];

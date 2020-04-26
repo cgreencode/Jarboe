@@ -1,46 +1,21 @@
+<?php
+/** @var \Yaro\Jarboe\Table\Fields\Image $field */
+/** @var \Yaro\Jarboe\Pack\Image $image */
+?>
 
-@if ($field->isMultiple())
-    @foreach (($field->getUrl($model) ?: []) as $url)
-        @if (filter_var($url, FILTER_VALIDATE_URL))
-            <div style="background-image: url('{{ $url }}')"
-                 class="image-field"
-                 data-lity
-                 data-lity-target="{{ $url }}"></div>
-        @elseif (preg_match('~^data:~', $url))
-            <div style="background-image: url('{{ $url }}')"
-                 class="image-field"
-                 data-lity
-                 data-lity-target="{{ $url }}"></div>
-        @else
-            {{ $url }}
-        @endif
-    @endforeach
-@else
-    @if (filter_var($field->getUrl($model), FILTER_VALIDATE_URL))
-        <div style="background-image: url('{{ $field->getUrl($model) }}')"
+@foreach ($field->getImagesPack($model) as $image)
+    @if (filter_var($image->croppedOrOriginalSourceUrl(), FILTER_VALIDATE_URL))
+        <div style="background-image: url('{{ $image->croppedOrOriginalSourceUrl() }}')"
              class="image-field"
              data-lity
-             data-lity-target="{{ $field->getUrl($model) }}"></div>
-    @elseif (preg_match('~^data:~', $field->getUrl($model)))
-        <div style="background-image: url('{{ $field->getUrl($model) }}')"
+             data-lity-target="{{ $image->croppedOrOriginalSourceUrl() }}"></div>
+    @elseif (preg_match('~^data:~', $image->croppedOrOriginalSourceUrl()))
+        <div style="background-image: url('{{ $image->croppedOrOriginalSourceUrl() }}')"
              class="image-field"
              data-lity
-             data-lity-target="{{ $field->getUrl($model) }}"></div>
+             data-lity-target="{{ $image->croppedOrOriginalSourceUrl() }}"></div>
     @else
-        {{ $field->getUrl($model) }}
+        {{ $image->croppedOrOriginalSourceUrl() }}
+        <br>
     @endif
-@endif
-
-
-@pushonce('style_files', <style>
-    div.image-field {
-        height: 50px;
-        max-height: 50px;
-        width: 50px;
-        max-width: 50px;
-        cursor: pointer;
-        display: inline-block;
-        background-size: cover;
-    }
-</style>)
-
+@endforeach

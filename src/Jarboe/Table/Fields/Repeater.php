@@ -143,7 +143,8 @@ class Repeater extends AbstractField
 
     public function getRepeaterItemFormView(array $data)
     {
-        $model = new class($data, \ArrayObject::STD_PROP_LIST | \ArrayObject::ARRAY_AS_PROPS) extends \ArrayObject {
+        $model = new class($data, \ArrayObject::STD_PROP_LIST | \ArrayObject::ARRAY_AS_PROPS) extends \ArrayObject
+        {
             public function offsetGet($index)
             {
                 if (!parent::offsetExists($index)) {
